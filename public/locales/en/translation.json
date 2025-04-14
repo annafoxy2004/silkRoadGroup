@@ -1,0 +1,102 @@
+{
+  "header": {
+    "discount": "Discount 25% for all product! Check out now!",
+    "location": "Bishkek",
+    "main": "Main",
+    "shop": "Shop",
+    "about_us": "About Us",
+    "news": "News",
+    "faq": "FAQ",
+    "catalog": "Catalog",
+    "search_placeholder": "Search products",
+    "favorites": "Favorites",
+    "cart": "Cart",
+    "login": "Log in",
+    "signup": "Sign up"
+  },
+  "footer": {
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+    "pages": "Pages",
+    "contacts": "Contacts",
+    "phone": "Phone number",
+    "email": "E-Mail",
+    "social_media": "Social media",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "youtube": "YouTube",
+    "rights": "Web Site All rights Reserved."
+  },
+  "home_page": {
+    "banner_title": "Fresh Groceries Delivered To Your Doorstep",
+    "banner_description": "We are pleased to announce a new product development! The range includes only proven products that guarantee reliability and long service life.",
+    "to_shop": "To shop",
+    "categories_title": "Categories",
+    "partners_title": "Our partners",
+    "partners_description": "Discover Our Complete Collection of Organic and Eco-Friendly Products for Every Need."
+  },
+  "auth": {
+    "email": "E-Mail",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "login": {
+      "span": "START FOR FREE",
+      "h1": "Welcome!",
+      "p": "Don't have an account?",
+      "pNav": "Sign up",
+      "forgotYourPassword": "Forgot your password?",
+      "orLoginWith": "Or login with"
+    },
+    "sign": {
+      "h1": "Create a new account",
+      "p": "Already have an account?",
+      "bySignIngInYouAgreeToOur": "By signing in, you agree to our",
+      "termsofUse": "Terms of Use",
+      "and": "and",
+      "privacyPolicy": "Privacy Policy",
+      "orSignUpWith": "Or sign up with"
+    },
+    "modal": {
+      "passwordRecovery": "Password recovery",
+      "passwordRecoveryTitle": "To recover your password, enter your phone number, to which a link will be sent to complete the recovery of access",
+      "receiveTheCode": "Receive the code",
+      "doYouAlreadyHaveAnAccount": "Do you already have an account?",
+      "dontHaveAnAccount": "Don't have an account?",
+      "identityVerification": "Identity verification",
+      "aCode": "A code has been sent to your email. It is needed to confirm your identity.",
+      "requestAgainIn": "Request again in:",
+      "requestAgain": "Request again",
+      "verifyCode": "Verify code",
+      "changePassword": "Change password",
+      "passwordRequirements": "The password must contain at least 6 characters including numbers, letters and special characters(!%$@).",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm Password",
+      "login": "Log in",
+      "verifyIdentity": "Identity verification",
+      "codeSentMessage": "A code has been sent to your email. It is needed to confirm your identity.",
+      "signUp": "Sign up",
+      "successMessage": "You have successfully registered!",
+      "goToMain": "Go to the main page"
+    }
+  },
+  "sideBar": {
+    "categories": "Categories",
+    "ratings": "Ratings",
+    "price": "Price",
+    "from": "From",
+    "to": "To",
+    "type": "Type",
+    "andAbove": "and above"
+  },
+  "shop": {
+    "allProducts": "All products",
+    "filter": "Filter questions",
+    "sortBy": "Sort by",
+    "showMore": "Show more"
+  },
+
+  "ru": "Russian",
+  "en": "English",
+  "kg": "Kyrgyz"
+}

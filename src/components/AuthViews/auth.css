@@ -1,0 +1,355 @@
+.auth {
+  display: flex;
+  flex-direction: row;
+  gap: 0 5%;
+  align-items: center;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.auth-img__block {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.auth-img__block img {
+  width: 100%;
+}
+
+.auth-form__block {
+  width: 50%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.form-title {
+  text-align: left;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px 0;
+}
+.form-title span {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.form-title h1 {
+  font-size: 36px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.form-title p {
+  font-size: 18px;
+  color: #666;
+}
+
+.form-title p a {
+  color: #28c656;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.form-title p a:hover {
+  text-decoration: 2px underline;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px 0;
+  margin-bottom: 20px;
+}
+
+.auth-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.auth-btn__block {
+  text-align: right;
+  width: auto;
+}
+.auth-text__block {
+  text-align: center;
+  width: auto;
+}
+.auth-text__block p {
+  font-size: 14px;
+  font-weight: 500;
+  color: #212022;
+}
+.auth-text__block p span {
+  font-size: 14px;
+  color: #28c656;
+  padding: 0;
+  cursor: pointer;
+}
+
+.auth-btn__block span {
+  font-size: 14px;
+  color: #28c656;
+  text-decoration: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.auth-text__block p span:hover,
+.auth-btn__block span:hover {
+  text-decoration: 2px underline;
+}
+
+.auth-btn button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.auth-btn button[style*="backgroundColor: #28C656"] {
+  background-color: #28c656 !important;
+  color: white !important;
+}
+
+.auth-btn button[style*="backgroundColor: #28C656"]:hover {
+  background-color: #24b34d !important;
+}
+.auth-line_block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: #ddd;
+}
+
+.divider-text {
+  font-size: 14px;
+  color: #666;
+}
+
+.auth-btns__block {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.auth-btns__block button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 50px;
+  background-color: #f0f0f0 !important;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333 !important;
+}
+
+.auth-btns__block button img {
+  width: 20px;
+  height: 20px;
+}
+
+.auth-btns__block button:hover {
+  background-color: #e0e0e0 !important;
+}
+
+/* Стили для модального окна */
+
+.custom-modal .ant-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 16px;
+}
+
+.custom-modal .input-group {
+  display: flex;
+}
+
+.custom-modal .ant-modal-header {
+  text-align: center;
+  border-bottom: none;
+  margin-top: 50px;
+}
+
+.custom-modal .ant-modal-title {
+  font-size: 36px;
+  font-weight: 600;
+  color: #333;
+}
+
+.custom-modal .ant-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0 1.7%;
+}
+
+.custom-modal .ant-modal-body p {
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+}
+
+.custom-modal .ant-modal-body .auth-form {
+  margin-bottom: 20px;
+}
+
+.custom-modal .ant-modal-body .ant-btn-primary {
+  background-color: #28c656 !important;
+  border-color: #28c656 !important;
+  border-radius: 5px;
+  height: 50px;
+  font-size: 16px;
+  font-weight: 500;
+  color: white !important;
+}
+
+.custom-modal .ant-modal-body .ant-btn-primary:hover {
+  background-color: #24b34d !important;
+  border-color: #24b34d !important;
+}
+
+.custom-modal .ant-modal-body .ant-modal-footer {
+  display: none;
+}
+
+.custom-modal .ant-modal-body div {
+  text-align: center;
+}
+
+.custom-modal .ant-modal-body div p {
+  font-size: 14px;
+  color: #666;
+  margin: 5px 0;
+}
+
+.custom-modal .ant-modal-body div p a {
+  color: #28c656;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.custom-modal .ant-modal-body div p a:hover {
+  text-decoration: 2px underline;
+}
+
+:where(.ant-otp) {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+:where(.ant-otp) .ant-otp-input {
+  height: 80px;
+  width: 80px;
+}
+
+.success-animation {
+  margin: 10px auto 50px auto;
+}
+
+.checkmark {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: #4bb71b;
+  stroke-miterlimit: 10;
+  box-shadow: inset 0px 0px 0px #4bb71b;
+  animation: fill 0.4s ease-in-out 0.4s forwards,
+    scale 0.3s ease-in-out 0.9s both;
+  position: relative;
+  top: 5px;
+  right: 5px;
+  /* margin: 0 auto; */
+}
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #4bb71b;
+  fill: #fff;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes scale {
+  0%,
+  100% {
+    transform: none;
+  }
+
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #4bb71b;
+  }
+}
+
+/* Стили для инпута (если нужно кастомизировать InputAuth) */
+
+@media (max-width: 768px) {
+  .auth {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .auth-img__block {
+    display: none;
+  }
+
+  .auth-form__block {
+    width: 100%;
+  }
+
+  .auth-img__block {
+    padding: 20px;
+  }
+
+  .auth-form__block {
+    padding: 20px;
+  }
+
+  .auth-btns__block button {
+    width: 100%;
+  }
+}

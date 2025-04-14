@@ -1,0 +1,82 @@
+@function toRem($value) {
+  @return ($value / 16) * 1rem;
+}
+
+// discount start
+.discoint-message {
+  background-color: #151515;
+  color: #ffffff;
+  &__body {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .message-block {
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      gap: 8px;
+
+      // Скрыть при ширине 500px и меньше
+      @media (max-width: 600px) {
+        display: none;
+      }
+    }
+  }
+}
+
+.discoint-message__body .button-block {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 5px;
+}
+
+.button-block .button-block__languages {
+  margin-right: 1%;
+}
+// discount end
+
+/* Menu start */
+.menu-bottom {
+  display: flex;
+  justify-content: center;
+  padding: 12px 0;
+  ul {
+    gap: toRem(30);
+  }
+}
+.menu-bottom .nav-menu {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-around;
+  list-style-type: none;
+}
+
+.menu-bottom .nav-menu a {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  text-decoration: none;
+  color: #151515;
+}
+.menu-bottom .nav-menu a:hover {
+  border-bottom: 2px solid #20a647;
+  padding: 0 0 2px 0;
+}
+.active {
+  border-bottom: 2px solid #20a647;
+  padding: 0 0 2px 0;
+}
+
+.focusMobile:visited {
+  border-bottom: 2px solid transparent;
+  color: #28c656;
+}
+
+.focusMobile:focus {
+  border-bottom: 2px solid transparent;
+  color: #28c656;
+}
+
+/* Menu end */

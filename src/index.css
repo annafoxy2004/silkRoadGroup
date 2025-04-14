@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  /* font-family: "Inter"; */
+}
+a:active,
+a:hover,
+a {
+  text-decoration: none;
+}
+body {
+  background-color: #ffffff;
+}
+#root {
+  background-color: #ffffff;
+}
+
+input:focus {
+  outline: none !important;
+}
+
+Сброс всех отступов и полей * {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+
+/* Установка box-sizing для всех элементов */
+html {
+  box-sizing: border-box;
+}
+
+/* Сброс стилей списков */
+ol,
+ul {
+  list-style: none;
+}
+
+/* Сброс стилей таблиц */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Сброс стилей для элементов форм */
+button,
+input,
+select,
+textarea {
+  background: none;
+  border: none;
+  outline: none;
+  font: inherit;
+}
+
+/* Удаление стандартных стилей ссылок */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Сброс стилей цитат */
+blockquote,
+q {
+  quotes: none;
+}
+
+/* Удаление стандартных кавычек */
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+/* Установка базовых стилей для body */
+body {
+  line-height: 1;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
