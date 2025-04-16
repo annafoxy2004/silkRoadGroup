@@ -8,7 +8,7 @@ const HeaderBottom = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="menu-bottom border-b border-b-gray-200">
+    <div className="menu-bottom border-b border-b-gray-200 bg-white">
       <ul className="nav-menu">
         <li>
           <NavLink to="/" className={pathname === "/" ? "active" : ""}>

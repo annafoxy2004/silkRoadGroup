@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../auth.css";
 import signLogin from "../../../assets/auth/sign-login.svg";
 import { NavLink, useNavigate } from "react-router-dom";
-import InputAuth from "../../ui/InputAuth/InputAuth.jsx";
+import InputAuth from "../../ui/atoms/InputAuth/InputAuth.jsx";
 import { Button, Input, Modal } from "antd";
 import googleIcon from "../../../assets/auth/googleicon.svg";
 import appleIcon from "../../../assets/auth/appleIcon.svg";
@@ -21,7 +21,7 @@ const SignViews = () => {
 
   const [modalOpen, setModalOpen] = useState(false);
 
-  const registerUser = useAuthStore((state) => state.registerUser); 
+  const registerUser = useAuthStore((state) => state.registerUser);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -81,8 +81,7 @@ const SignViews = () => {
               onChange={handleInputChange}
               required
               error={
-                data.confirmPassword &&
-                data.confirmPassword !== data.password
+                data.confirmPassword && data.confirmPassword !== data.password
               }
             />
           </div>
@@ -104,7 +103,7 @@ const SignViews = () => {
               size="large"
               color="default"
               variant="solid"
-              onClick={handleSignUp} 
+              onClick={handleSignUp}
             >
               {t("auth.login.pNav")}
             </Button>
@@ -147,11 +146,7 @@ const SignViews = () => {
         className="custom-modal"
       >
         <p>{t("auth.modal.codeSentMessage")}</p>
-        <Input.OTP
-          className="inputOtP"
-          variant="filled"
-          length={4}
-        />
+        <Input.OTP className="inputOtP" variant="filled" length={4} />
         <div style={{ marginTop: 16, textAlign: "center" }}>
           <p>
             {t("auth.modal.requestAgainIn")} <strong>01:59</strong>

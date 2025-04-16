@@ -5,7 +5,9 @@ import { useTranslation } from "react-i18next";
 
 const NavFavorites = () => {
   const { t } = useTranslation();
-
+  const accessToken = localStorage.getItem("accessToken");
+  if (!accessToken) return null;
+  
   return (
     <Link to="/favourites">
       <div className="flex items-center gap-2 cursor-pointer">

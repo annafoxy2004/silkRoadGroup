@@ -1,0 +1,32 @@
+/* BANNER START */
+.banner {
+    overflow: hidden;
+    background-color: #20A647;
+  }
+  
+  .banner-block2 {
+    height: 100%;
+    background: 
+      url(@/assets/home/bannerImg.svg) no-repeat,
+      url(@/assets/home/broccoli.svg) 60% 10% no-repeat,
+      url(@/assets/home/nuts.svg) 82% 10% no-repeat,
+      url(@/assets/home/carrot.svg) 68% 27% no-repeat,
+      url(@/assets/home/dish.svg) 53% 80% no-repeat,
+      url(@/assets/home/eggplant.svg) 70% 70% no-repeat,
+      url(@/assets/home/onion.svg) 78% 97% no-repeat;
+  
+    /* сдвинули первую картинку вниз на 50px */
+    background-position: 100% 130px, 60% 10%, 82% 10%, 68% 27%, 53% 80%, 70% 70%, 78% 97%;
+  
+    background-size: 200px auto, auto, auto, auto, auto, auto, auto;
+  }
+  
+  .banner-block {
+    height: 100%;
+    background: url(@/assets/home/bannerImg.svg) 100% 30% no-repeat,
+      url(@/assets/home/broccoli.svg) 60% 10% no-repeat, url(@/assets/home/nuts.svg) 82% 10% no-repeat,
+      url(@/assets/home/carrot.svg) 68% 27% no-repeat, url(@/assets/home/dish.svg) 53% 80% no-repeat,
+      url(@/assets/home/eggplant.svg) 70% 70% no-repeat, url(@/assets/home/onion.svg) 78% 97% no-repeat;
+  }
+  
+  /* BANNER END */

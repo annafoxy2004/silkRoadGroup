@@ -1,8 +1,9 @@
+import ProductPageList from "@/components/product/ProductPageList";
 
 export default function ProductsPage() {
   return (
     <div>
-      <p>ProductsPage</p>
+      <ProductPageList/>
     </div>
   );
 }

@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
+
+/* SIDEBAR START */
+.stars {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.stars svg {
+  margin-right: 4px;
+}
+.sidebar {
+  width: 370px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  transition: all 0.3s ease; /* плавный переход */
+  overflow: hidden; /* скрыть содержимое при закрытии */
+}
+
+.sidebar.collapsed {
+  width: 0;
+  padding: 0;
+  opacity: 0;
+}
+
+.filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter__left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.products {
+  margin-top: 20px;
+}
+
+.ant-collapse {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.ant-collapse-item {
+  border-bottom: 1px solid #d9d9d9 !important;
+}
+
+.ant-collapse-header {
+  font-weight: 600 !important;
+  font-size: 16px !important;
+}
+
+.ant-checkbox-wrapper {
+  margin: 0 !important;
+}
+
+.ant-slider {
+  margin: 10px 0;
+}
+
+.ant-slider-track {
+  background-color: #28C656 !important;
+}
+
+.ant-slider-handle {
+  border-color: #28C656 !important;
+}
+
+.inputPrice_from{
+  background: #f0f0f0;
+  border-radius: 12px;
+  padding: 8px 8px 8px 15px;
+  width: 144px;
+  height: 40px;
+}
+.inputPrice_to{
+  background: #f0f0f0;
+  border-radius: 12px;
+  padding: 8px 8px 8px 15px;
+  width: 144px;
+  height: 40px;
+}
+
+.sidebar.collapsed {
+  display: none;  /* Скрываем боковую панель */
+}
+/* SIDEBAR END */

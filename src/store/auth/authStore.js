@@ -41,14 +41,12 @@ const useAuthStore = create((set) => ({
       });
 
       const { access, refresh, user } = response.data;
-      // Сохраняем токены в store
       set({
         user: user,
         accessToken: access,
         refreshToken: refresh,
       });
 
-      // Сохраняем токены в localStorage
       localStorage.setItem("accessToken", access);
       localStorage.setItem("refreshToken", refresh);
       console.log("login success", response.data);
@@ -65,7 +63,6 @@ const useAuthStore = create((set) => ({
     }
   },
 
-  // Функция для рефреша токена
   refreshToken: async () => {
     const refreshToken = localStorage.getItem("refreshToken");
 
@@ -77,16 +74,11 @@ const useAuthStore = create((set) => ({
     set({ loading: true });
 
     try {
-      const response = await axios.post(
-        `${API}/api/api_user/token/refresh/`,
-        {
-          refreshToken,
-        }
-      );
-
+      const response = await axios.post(`${API}/api/api_user/token/refresh/`, {
+        refresh: refreshToken,
+      });
       const { access } = response.data;
 
-      // Обновляем токен в store и в localStorage
       set({ accessToken: access });
       localStorage.setItem("accessToken", access);
 

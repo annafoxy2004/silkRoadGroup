@@ -8,7 +8,7 @@ const HeaderBottomMobile = () => {
   const { pathname } = useLocation();
   const { t } = useTranslation();
   return (
-    <div className="fixed bg-white bottom-0 w-full h-20 pt-3 border border-t-1 border-t-gray-200">
+    <div className="fixed bg-white bottom-0 w-full h-20 pt-3 border border-t-1 border-t-gray-200 z-20">
       <ul className="flex flex-row justify-evenly gap-4 ">
         <li>
           <Link to="/" className={pathname === "/" ? "focusMobile flex flex-col items-center justify-center gap-1 border-none" : "flex border-none flex-col items-center justify-center gap-1"}>

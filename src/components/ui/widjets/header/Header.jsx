@@ -5,16 +5,19 @@ import HeaderBottom from "./bottom/HeaderBottom";
 import HeaderBottomMobile from "./bottom/HeaderBottomMobile";
 import { useLocation } from "react-router-dom";
 import AuthHeader from "./authHeader/AuthHeader";
+import useAuthStore from "@/store/auth/authStore";
 
 const Header = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);
   const location = useLocation();
+  const { refreshToken } = useAuthStore();
 
   const handleResize = () => {
     setIsMobile(window.innerWidth <= 450);
   };
 
   useEffect(() => {
+    refreshToken()
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -24,8 +27,9 @@ const Header = () => {
   if (hideHeader) return <AuthHeader/>
 
   return (
-    <nav>
+    <nav className="fixed top-0 z-20 w-full">
       <Discount />
+
       <HeaderMiddle />
       {isMobile ? (
         <>

@@ -3,11 +3,8 @@ import logo from "@/assets/logo.svg";
 import catalog from "@/assets/header/catalogIcon.svg";
 import { Button } from "antd";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
-import CartIcon from "@/assets/header/CartIcon";
 import NavSearch from "./NavSearch";
 import NavLoginBtn from "./NavLoginBtn";
-import favorites from "@/assets/header/favorites.svg";
 import BurgerMenu from "./BurgerMenu";
 import NavFavorites from "./NavFavorites";
 import NavCart from "./NavCart";
@@ -26,17 +23,17 @@ const HeaderMiddle = () => {
   }, []);
 
   return (
-    <div className="border-b border-b-gray-200 flex flex-row items-center justify-around">
+    <div className="border-b border-b-gray-200 flex flex-row items-center justify-around bg-white">
       {isMobile ? (
         <>
           <div className="flex flex-row items-center gap-5">
-            <img src={logo} alt="logo" className="mr-0 lg:mr-16" />
+            <img src={logo} alt="logo" className="my-2 mr-0 lg:mr-16" />
           </div>
         </>
       ) : (
         <>
           <div className="flex flex-row items-center gap-5">
-            <img src={logo} alt="logo" className="mr-0 lg:mr-16" />
+            <img src={logo} alt="logo" className="my-2 mr-0 lg:mr-16" />
             <Button
               style={{
                 color: "white",

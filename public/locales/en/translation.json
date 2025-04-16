@@ -12,7 +12,8 @@
     "favorites": "Favorites",
     "cart": "Cart",
     "login": "Log in",
-    "signup": "Sign up"
+    "signup": "Sign up",
+    "logout":"Log out"
   },
   "footer": {
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
@@ -34,7 +35,10 @@
     "to_shop": "To shop",
     "categories_title": "Categories",
     "partners_title": "Our partners",
-    "partners_description": "Discover Our Complete Collection of Organic and Eco-Friendly Products for Every Need."
+    "partners_description": "Discover Our Complete Collection of Organic and Eco-Friendly Products for Every Need.",
+    "home_block_desc1": "Read about how we started, our vision and goals",
+    "home_block_desc2": "We are responsible for quality and are confident in our products.",
+    "products": "Products"
   },
   "auth": {
     "email": "E-Mail",
@@ -93,10 +97,57 @@
     "allProducts": "All products",
     "filter": "Filter questions",
     "sortBy": "Sort by",
-    "showMore": "Show more"
+    "showMore": "Show more",
+    "addToCart": "Add to cart",
+    "seeAll": "See all",
+    "total": "Total"
   },
-
+  "about": {
+    "our": "Our Team",
+    "desc": "Discover our full collection of organic and eco-friendly products",
+    "top1": "DISCOVER OUR MISSION",
+    "top2": "AND VALUES",
+    "top3": "Dedicated to Creating a Greener and Healthier Future Through Our Commitment to Sustainability, Uncompromising Quality, and Continuous Innovation",
+    "mid1": "OUR MISSION",
+    "mid2": "GET TO KNOW US: WHO WE ARE AND WHAT WE STAND FOR",
+    "mid3": "Shaping a Greener Tomorrow Through Sustainability, Quality, and Innovation",
+    "mid4": "We aim to create a world where caring for the environment and health is accessible to everyone. Our mission is to provide high-quality, eco-friendly products and solutions that support a healthy lifestyle and a sustainable future. We combine innovation, a responsible approach to nature, and a commitment to excellence to make eco-conscious choices simple, convenient, and inspiring. We believe that, together with our customers and partners, we can contribute to building a better world for present and future generations."
+  },
+  "faq": {
+    "title1": "FREQUENTLY ASKED QUESTIONS",
+    "title2": "Find Comprehensive Answers to All Your Most Frequently Asked Questions About Our Products and Services",
+    "q1": {
+      "number": "01",
+      "text1": "Are your products organic?",
+      "text2": "Yes, we prioritize offering certified organic products. Look for the Certified Organic label on individual items."
+    },
+    "q2": {
+      "number": "02",
+      "text1": "Do you sell local products?",
+      "text2": "Absolutely! We partner with local farmers and artisans to reduce our carbon footprint and support the local community."
+    },
+    "q3": {
+      "number": "03",
+      "text1": "Are your cleaning products eco-friendly?",
+      "text2": "Yes, our cleaning products are biodegradable, non-toxic, and made with sustainable ingredients."
+    },
+    "q4": {
+      "number": "04",
+      "text1": "Do you offer plastic-free packaging?",
+      "text2": "Yes, we strive to eliminate single-use plastics and provide biodegradable, reusable, or compostable packaging options."
+    },
+    "q5": {
+      "number": "05",
+      "text1": "Can I bring my own containers or bags?",
+      "text2": "Definitely! We encourage customers to bring their own containers and bags. We also have a weigh-and-fill system for bulk purchases."
+    },
+    "q6": {
+      "number": "06",
+      "text1": "What do you do with unsold food?",
+      "text2": "We donate unsold yet edible food to local charities and compost any food waste to minimize our environmental impact."
+    }
+  },
   "ru": "Russian",
   "en": "English",
-  "kg": "Kyrgyz"
+  "ky": "Kyrgyz"
 }

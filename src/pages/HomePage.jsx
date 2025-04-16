@@ -1,4 +1,8 @@
-import PartnersInfo from "@/components/AuthViews/home/PartnersInfo";
+import HomeBanner from "@/components/home/HomeBanner";
+import HomeBlocks from "@/components/home/HomeBlocks";
+import HomeCategories from "@/components/home/HomeCategories";
+import HomeProductList from "@/components/home/HomeProductList";
+import PartnersInfo from "@/components/home/PartnersInfo";
 
 export default function HomePage() {
   return (
@@ -8,6 +12,10 @@ export default function HomePage() {
       <ProductCards />
       <Infocards />
       <PartnersInfo /> */}
+      <HomeBanner/>
+      <HomeCategories/>
+      <HomeProductList/>
+      <HomeBlocks/>
       <PartnersInfo/>
     </div>
   );

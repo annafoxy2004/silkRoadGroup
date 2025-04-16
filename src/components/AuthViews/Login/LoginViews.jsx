@@ -6,7 +6,7 @@ import { Button, Modal } from "antd";
 import googleIcon from "../../../assets/auth/googleicon.svg";
 import appleIcon from "../../../assets/auth/appleIcon.svg";
 import { useTranslation } from "react-i18next";
-import InputAuth from "../../ui/InputAuth/InputAuth.jsx";
+import InputAuth from "../../ui/atoms/InputAuth/InputAuth.jsx";
 import useAuthStore from "@/store/auth/authStore";
 
 const LoginViews = () => {

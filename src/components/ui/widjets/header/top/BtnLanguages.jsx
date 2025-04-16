@@ -34,7 +34,7 @@ const BtnLanguages = () => {
         options={[
           { value: "ru", label: t("ru") },
           { value: "en", label: t("en") },
-          { value: "kg", label: t("kg") },
+          { value: "ky", label: t("ky") },
         ]}
       />
     </div>

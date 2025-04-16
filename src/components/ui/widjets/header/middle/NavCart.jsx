@@ -5,6 +5,8 @@ import { useTranslation } from "react-i18next";
 
 const NavCart = () => {
   const { t } = useTranslation();
+  const accessToken = localStorage.getItem("accessToken");
+  if (!accessToken) return null;
 
   return (
     <Link to="/cart">
