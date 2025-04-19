@@ -37,7 +37,7 @@ const NewsCard = ({ newsItem }) => {
 
       <div className="flex flex-col gap-2">
         <p className="border border-gray-800 rounded-2xl p-2 bg-white w-16 text-center">
-          {t("news.politic")}
+          Politic
         </p>
 
         <p className="text-md sm:text-xl font-semibold">{newsItem.title}</p>

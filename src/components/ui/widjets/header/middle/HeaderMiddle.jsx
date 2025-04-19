@@ -8,10 +8,12 @@ import NavLoginBtn from "./NavLoginBtn";
 import BurgerMenu from "./BurgerMenu";
 import NavFavorites from "./NavFavorites";
 import NavCart from "./NavCart";
+import { useNavigate } from "react-router-dom";
 
 const HeaderMiddle = () => {
   const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
+  const navigate = useNavigate();
 
   const handleResize = () => {
     setIsMobile(window.innerWidth <= 900);
@@ -35,6 +37,9 @@ const HeaderMiddle = () => {
           <div className="flex flex-row items-center gap-5">
             <img src={logo} alt="logo" className="my-2 mr-0 lg:mr-16" />
             <Button
+              onClick={() => {
+                navigate("/products");
+              }}
               style={{
                 color: "white",
                 backgroundColor: "#20A647",
