@@ -82,7 +82,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="font-thin flex justify-center gap-1 items-center h-24 border-t border-t-gray-200">
+      <div className="font-thin flex justify-center gap-1 items-center h-24 border-t border-t-gray-200 mb-20 sm:mb-0">
         <img src={rights} alt="rights" />
         <p>{t("footer.rights")}</p>
       </div>

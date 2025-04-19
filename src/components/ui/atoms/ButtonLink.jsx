@@ -22,7 +22,7 @@ const ButtonLink = ({
     xs: "w-32 sm:w-48",
     sm: "w-36 sm:w-52 py-3",
     md: "w-full sm:w-80",
-    lg:"w-full"
+    lg:"w-full py-5 text-[14px]"
   };
 
   const baseClasses = classNames(

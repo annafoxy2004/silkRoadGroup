@@ -76,7 +76,7 @@ export const Products = ({ pathname }) => {
             </ButtonLink>
             
             )}
-{
+{/* {
   isMobile?(
 <></>
   ):(
@@ -85,7 +85,7 @@ export const Products = ({ pathname }) => {
             </p>
 
   )
-}
+} */}
           </div>
           <p className="font-semibold text-[13px] sm:text-base text-gray-900">
             {`${t("shop.total")}: ${totalCount}`}

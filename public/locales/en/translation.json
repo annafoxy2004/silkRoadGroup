@@ -13,7 +13,9 @@
     "cart": "Cart",
     "login": "Log in",
     "signup": "Sign up",
-    "logout":"Log out"
+    "logout": "Log out",
+    "home": "Home",
+    "detail": "Details"
   },
   "footer": {
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
@@ -100,7 +102,8 @@
     "showMore": "Show more",
     "addToCart": "Add to cart",
     "seeAll": "See all",
-    "total": "Total"
+    "total": "Total",
+    "fav":"My favorite products"
   },
   "about": {
     "our": "Our Team",
@@ -149,5 +152,31 @@
   },
   "ru": "Russian",
   "en": "English",
-  "ky": "Kyrgyz"
+  "ky": "Kyrgyz",
+  "productDetail": {
+    "description": "Description",
+    "go": "Go to description",
+    "also": "Also see",
+    "reviews": "Reviews",
+    "category": "Category:",
+    "data": "Shelf Life:",
+    "temp": "Minimum Temperature:",
+    "stock": "Stock",
+    "oneClick": "Buy in one click"
+  },
+  "cart": {
+    "your": "Your cart",
+    "quantity": "Quantity:",
+    "category": "Category:",
+    "summary": "Summary",
+    "total": "Total",
+    "checkout": "Check Out"
+  },
+  "news":{
+    "title1":"Latest news",
+    "title2":"Explore the Latest Updates, News, and Stories Shaping Our Community and Vision",
+    "politic":"Politic",
+    "views":"views",
+    "ago":"month ago"
+  }
 }

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./SideBar.css";
 import { Collapse, Checkbox, Slider, Drawer } from "antd";
 import { useTranslation } from "react-i18next";
+import useProductStore from "@/store/product/productStore";
 
 const BurgerSideBar = ({ sidebarVisible, open, onClose }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -10,7 +11,22 @@ const BurgerSideBar = ({ sidebarVisible, open, onClose }) => {
   const [priceRange, setPriceRange] = useState([0, 1000]);
   const [minInput, setMinInput] = useState("");
   const [maxInput, setMaxInput] = useState("");
-  const { t } = useTranslation();
+
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language.split("-")[0];  const {
+    getCategories,
+    getProducts,
+    categories,
+    setCategory,
+    selectedCategory,
+    loading,
+    filterProductsByPrice,
+  } = useProductStore();
+
+  useEffect(() => {
+    getCategories();
+    getProducts(); // нужно для фильтрации по категориям
+  }, []);
 
   const handleInputPriceChange = (e) => {
     const { name, value } = e.target;
@@ -19,29 +35,30 @@ const BurgerSideBar = ({ sidebarVisible, open, onClose }) => {
     } else if (name === "max") {
       setMaxInput(value);
     }
+  
+    // Фильтрация по цене сразу при изменении значений
+    const newMin = minInput === "" ? 0 : Math.max(0, Number(minInput));
+    const newMax = maxInput === "" ? 1000 : Math.max(newMin, Number(maxInput));
+    setPriceRange([newMin, newMax]);
+    filterProductsByPrice(newMin, newMax); // фильтруем сразу
   };
+  
 
   const handlePriceConfirm = () => {
     const newMin = minInput === "" ? 0 : Math.max(0, Number(minInput));
     const newMax = maxInput === "" ? 1000 : Math.max(newMin, Number(maxInput));
     setPriceRange([newMin, newMax]);
+    filterProductsByPrice(newMin, newMax); // <-- фильтруем по цене!
   };
+  
 
-  const handleCategoryChange = (checkedValues) => {
+  const handleCategoryChange = (checkedValues) =>
     setSelectedCategories(checkedValues);
-  };
-
-  const handleRatingChange = (checkedValues) => {
+  const handleRatingChange = (checkedValues) =>
     setSelectedRatings(checkedValues);
-  };
+  const handleTypeChange = (checkedValues) => setSelectedTypes(checkedValues);
+  const handlePriceChange = (value) => setPriceRange(value);
 
-  const handleTypeChange = (checkedValues) => {
-    setSelectedTypes(checkedValues);
-  };
-
-  const handlePriceChange = (value) => {
-    setPriceRange(value);
-  };
 
   const renderStars = (rating) => {
     const fullStars = Math.floor(rating);
@@ -90,7 +107,7 @@ const BurgerSideBar = ({ sidebarVisible, open, onClose }) => {
   };
 
   return (
-    <Drawer placement="bottom" onClose={onClose} open={open} height="570">
+    <Drawer placement="bottom" onClose={onClose} open={open} height={570}>
       <div className="p-1 overflow-y-scroll">
         <Collapse
           defaultActiveKey={["1"]}
@@ -101,23 +118,25 @@ const BurgerSideBar = ({ sidebarVisible, open, onClose }) => {
               label: t("sideBar.categories"),
               children: (
                 <Checkbox.Group
-                  onChange={handleCategoryChange}
-                  value={selectedCategories}
-                >
-                  <div className="flex flex-col gap-2.5">
-                    <Checkbox value="dried-fruits">Сухофрукты (3 890)</Checkbox>
-                    <Checkbox value="vegetables-fruits">
-                      Овощи и фрукты (3 890)
-                    </Checkbox>
-                    <Checkbox value="meats-eggs">Мясо и яйца (3 890)</Checkbox>
-                    <Checkbox value="dairy-products">
-                      Молочные продукты (3 890)
-                    </Checkbox>
-                    <Checkbox value="cereals-legumes">
-                      Крупы и бобовые (3 890)
-                    </Checkbox>
-                  </div>
-                </Checkbox.Group>
+          onChange={handleCategoryChange}
+          value={selectedCategories}
+        >
+          <div className="flex flex-col gap-2.5">
+            {categories.map((cat) => {
+              const translatedName =
+                cat.translations?.[currentLang]?.name ||
+                cat.translations?.en?.name ||
+                cat.name;
+
+              return (
+                <Checkbox key={cat.id}
+                onClick={() => setCategory(cat.id)}  value={cat.slug}>
+                  {translatedName}
+                </Checkbox>
+              );
+            })}
+          </div>
+        </Checkbox.Group>
               ),
             },
             {
@@ -151,7 +170,7 @@ const BurgerSideBar = ({ sidebarVisible, open, onClose }) => {
               children: (
                 <>
                   <div className="px-2">
-                    <Slider
+                    {/* <Slider
                       range
                       min={0}
                       max={1000}
@@ -161,7 +180,7 @@ const BurgerSideBar = ({ sidebarVisible, open, onClose }) => {
                     <div className="flex justify-between mt-2">
                       <span>{priceRange[0]} c</span>
                       <span>{priceRange[1]} c</span>
-                    </div>
+                    </div> */}
                   </div>
                   <div className="flex justify-between mt-2 px-2 gap-2">
                     <input

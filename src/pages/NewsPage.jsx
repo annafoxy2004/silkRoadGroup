@@ -1,3 +1,9 @@
+import NewsMain from "@/components/news/NewsMain";
+
 export default function NewsPage() {
-  return <div>NewsPage</div>;
+  return (
+    <div>
+      <NewsMain />
+    </div>
+  );
 }
