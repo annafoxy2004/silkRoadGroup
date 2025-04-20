@@ -164,10 +164,15 @@ const useProductStore = create((set, get) => ({
 
   changeLike: async (slug) => {
     const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      set({ error: "No access token found" });
+      return;
+    }
   
     set({ loading: true, error: null });
     try {
-      const response = await axios.post(
+      // 1. Меняем статус на бэке
+      await axios.post(
         `${API}/api/api_product/products/${slug}/favorite/`,
         {},
         {
@@ -177,61 +182,74 @@ const useProductStore = create((set, get) => ({
         }
       );
   
-      const response2 = await axios.get(`${API}/api/api_product/favorites/`, {
+      // 2. Обновляем products и oneProduct в Zustand
+      set((state) => {
+        const updateFavoriteFlag = (product) =>
+          product.slug === slug
+            ? { ...product, is_favorite: !product.is_favorite }
+            : product;
+  
+        return {
+          products: state.products.map(updateFavoriteFlag),
+          filteredProducts: state.filteredProducts.map(updateFavoriteFlag),
+          oneProduct:
+            state.oneProduct?.slug === slug
+              ? { ...state.oneProduct, is_favorite: !state.oneProduct.is_favorite }
+              : state.oneProduct,
+        };
+      });
+  
+      // 3. После toggle обновим избранные (опционально)
+      await get().getFavorites();
+    } catch (error) {
+      console.error("changeLike error:", error);
+      set({ error: error.message || "Favorite toggle failed" });
+    } finally {
+      set({ loading: false });
+    }
+  },
+  
+  
+  getFavorites: async () => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      set({ error: "No access token found" });
+      return;
+    }
+  
+    set({ loading: true, error: null });
+    try {
+      const response = await axios.get(`${API}/api/api_product/favorites/`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       });
   
-      set((state) => ({
-        favProducts: response2.data,
-        products: state.products.map((product) =>
-          product.slug === slug
-            ? { ...product, is_favorite: !product.is_favorite }
-            : product
-        ),
-        // если oneProduct открыт, тоже обновим
-        oneProduct:
-          state.oneProduct?.slug === slug
-            ? { ...state.oneProduct, is_favorite: !state.oneProduct.is_favorite }
-            : state.oneProduct,
-      }));
+      const favData = response.data;
   
-      // console.log(`success changeLike:`, response.data);
+      set((state) => {
+        // Обновим is_favorite в products в зависимости от favData
+        const favIds = favData.map((fav) => fav.id);
+  
+        const syncFavoriteFlag = (product) => ({
+          ...product,
+          is_favorite: favIds.includes(product.id),
+        });
+  
+        return {
+          favProducts: favData,
+          products: state.products.map(syncFavoriteFlag),
+          filteredProducts: state.filteredProducts.map(syncFavoriteFlag),
+        };
+      });
     } catch (error) {
-      set({ error: error.message || "Product load failed" });
-      // console.log("changeLike fail", error);
+      console.error("getFavorites error:", error);
+      set({ error: error.message || "Failed to fetch favorites" });
     } finally {
       set({ loading: false });
     }
   },
   
-
-  getFavorites: async () => {
-    const accessToken = localStorage.getItem("accessToken");
-
-    set({ loading: true, error: null });
-    try {
-      const response = await axios.get(
-        `${API}/api/api_product/favorites/`,
-
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
-      set({ favProducts: response.data });
-
-      // console.log("favProducts:", response.data);
-      // console.log(response.data[0]);
-    } catch (error) {
-      set({ error: error.message || "Product load failed" });
-      // console.log("getFavorites fail", error);
-    } finally {
-      set({ loading: false });
-    }
-  },
 }));
 
 export default useProductStore;

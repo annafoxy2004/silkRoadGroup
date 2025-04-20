@@ -13,11 +13,15 @@ import useCartStore from "@/store/cart/cartStore";
 const ProductCard = ({ product, btnTitle, isfav }) => {
   const { i18n, t } = useTranslation();
   const currentLang = i18n.language.split("-")[0];
-  const accessToken = localStorage.getItem("accessToken");
-  const { getOneProductById, changeLike, getFavorites, favProducts } =
-    useProductStore();
+  const {
+    getOneProductById,
+    changeLike,
+    getFavorites,
+    favProducts,
+  } = useProductStore();
   const navigate = useNavigate();
   const { setOneCartItem } = useCartStore();
+  const accessToken = localStorage.getItem("accessToken");
 
   const displayProduct = isfav
     ? favProducts.find((item) => item.id === product.id)
@@ -25,35 +29,40 @@ const ProductCard = ({ product, btnTitle, isfav }) => {
 
   if (!displayProduct || !displayProduct.translations) return null;
 
-  const translatedData = displayProduct.translations[currentLang] ||
+  const translatedData =
+    displayProduct.translations[currentLang] ||
     displayProduct.translations.en || {
       name: "No name",
       description: "No description",
     };
 
-  const handleCardClick = (e) => {
-    // Проверяем, был ли клик на кнопке "Избранное"
-    if (e.target.closest(".product-like-button")) return;
+    const handleCardClick = async () => {
+      if (accessToken) {
+        getFavorites();
+      }
+    
+      await getOneProductById(displayProduct.slug); // дождись данных
+      navigate(`/products/${displayProduct.id}`);   // потом переходи
+    };
+    
 
-    getOneProductById(displayProduct.slug);
-    navigate(`/products/${displayProduct.id}`); // Перенаправление на детализацию
-    getFavorites();
-  };
+  const handleFavoriteClick = async (e) => {
+    e.stopPropagation();
+    if (!accessToken) return;
 
-  const handleFavoriteClick = (e) => {
-    e.stopPropagation(); // Предотвращаем срабатывание onClick родительского компонента
-    changeLike(displayProduct.slug);
+    await changeLike(displayProduct.slug);
+    // `getFavorites` уже вызывается внутри `changeLike`, здесь не требуется
   };
 
   return (
     <div className="rounded-xl shadow-md p-1 sm:p-4 relative z-0 flex flex-col gap-2 justify-center">
       <div className="absolute top-5 sm:top-6 right-3 sm:right-6 z-10">
         <ProductLike
-          className="product-like-button" // Добавляем класс для кнопки "Избранное"
+          className="product-like-button"
           isFavorite={displayProduct.is_favorite}
           green="white"
           id_product={displayProduct.slug}
-          onClick={handleFavoriteClick} // Теперь кнопка избранного обрабатывается отдельно
+          onClick={handleFavoriteClick}
         />
       </div>
 
@@ -94,7 +103,7 @@ const ProductCard = ({ product, btnTitle, isfav }) => {
             title={t("shop.addToCart")}
             imgSrc={<CartIcon color="white" />}
             onClick={(e) => {
-              e.stopPropagation(); // Предотвращаем срабатывание onClick родительского компонента
+              e.stopPropagation();
               setOneCartItem(displayProduct.id);
             }}
             className="ml-2 sm:ml-0"
@@ -104,5 +113,6 @@ const ProductCard = ({ product, btnTitle, isfav }) => {
     </div>
   );
 };
+
 
 export default ProductCard;

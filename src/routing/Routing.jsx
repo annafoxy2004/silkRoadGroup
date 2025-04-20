@@ -24,28 +24,26 @@ export default function Routing() {
 
     { link: "/products", page: <ProductsPage />, id: 4 },
     { link: "/products/:id", page: <ProductDetailPage />, id: 8 },
-    
+
     { link: "/faq", page: <FAQPage />, id: 5 },
     { link: "/signup", page: <SignUpPage />, id: 6 },
     { link: "/login", page: <LoginPage />, id: 7 },
 
     {
       link: "/cart",
-      page: accessToken ? <CartPage /> : <Navigate to="/login" />,
+      page: <CartPage />,
       id: 9,
     },
     {
       link: "/favourites",
-      page: accessToken ? <FavouritesPage /> : <Navigate to="/login" />,
+      page: <FavouritesPage />,
       id: 10,
-    },,
+    },
     {
       link: "/checkout",
-      page: accessToken ? <CheckoutPage /> : <Navigate to="/login" />,
+      page: <CheckoutPage />,
       id: 11,
     },
-
-
   ];
 
   return (
