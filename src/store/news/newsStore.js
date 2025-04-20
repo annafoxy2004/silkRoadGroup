@@ -17,7 +17,7 @@ const useNewsStore = create((set, get) => ({
       try {
         const response = await axios.get(`${API}/api/api_news/news/`);
         set({ news: response.data });
-        console.log("news success:", response.data);
+        // console.log("news success:", response.data);
       } catch (error) {
         set({ error: error.message || "news load failed" });
       } finally {
@@ -31,7 +31,7 @@ const useNewsStore = create((set, get) => ({
           },
         });
         set({ news: response.data });
-        console.log("news success:", response.data);
+        // console.log("news success:", response.data);
       } catch (error) {
         set({ error: error.message || "news load failed" });
       } finally {
@@ -52,7 +52,7 @@ const useNewsStore = create((set, get) => ({
           });
           
         set({ oneNew: response.data });
-        console.log("getOneNewsById:", response.data);
+        // console.log("getOneNewsById:", response.data);
       } catch (error) {
         set({ error: error.message || "news load failed" });
       } finally {

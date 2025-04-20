@@ -13,9 +13,11 @@ import ButtonLink from "@/components/ui/atoms/ButtonLink";
 import ProductLike from "@/components/ui/atoms/ProductLike";
 import ProductsAlsoSee from "./ProductsAlsoSee";
 import { useParams } from "react-router-dom";
+import useCartStore from "@/store/cart/cartStore";
 
 const ProductDetail = () => {
-  const { oneProduct, getOneProductById, addToCart, changeLike } = useProductStore();
+  const { oneProduct, getOneProductById, changeLike,  } =
+    useProductStore();
   const { slug } = useParams();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -24,6 +26,7 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const [activeImage, setActiveImage] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 700);
+  const { setOneCartItem } = useCartStore();
 
   const handleResize = () => {
     setIsMobile(window.innerWidth <= 0);
@@ -44,35 +47,28 @@ const ProductDetail = () => {
   const currentLang = i18n.language.split("-")[0];
 
   useEffect(() => {
-    // getOneProductById(product.slug);
     if (oneProduct?.images?.length) {
       setActiveImage(`${API}/${oneProduct.images[0]}`);
     }
   }, [oneProduct]);
 
   useEffect(() => {
-    if (!isLoading && !oneProduct) {
+    if ((!isLoading && !oneProduct) || !oneProduct?.translations) {
       navigate(-1);
     }
   }, [isLoading, oneProduct]);
 
-  if (!oneProduct || !oneProduct.translations) {
-    return (
-      navigate(-1)
-    ) // 👈 можно показать загрузку, пока товар не загружен
-  }
-
   const accessToken = localStorage.getItem("accessToken");
-  //   if (!accessToken) return null;
 
-  const translatedData = oneProduct.translations[currentLang] ||
-    oneProduct.translations.en || {
+  // Проверка на наличие данных
+  const translatedData = oneProduct?.translations?.[currentLang] ||
+    oneProduct?.translations?.en || {
       name: t("product.no_name", "No name"),
       description: t("product.no_description", "No description"),
     };
 
-  const translatedCategory = oneProduct.category.translations[currentLang] ||
-    oneProduct.translations.en || {
+  const translatedCategory = oneProduct?.category?.translations?.[currentLang] ||
+    oneProduct?.category?.translations?.en || {
       name: t("product.no_name", "No name"),
     };
 
@@ -107,7 +103,7 @@ const ProductDetail = () => {
           <div>
             <div className="h-[500px] sm:h-[650px] flex gap-3">
               <div className="img-carousel h-full overflow-y-scroll">
-                {oneProduct.images.map((item, key) => {
+                {oneProduct?.images?.map((item, key) => {
                   const imageSrc = item ? `${API}/${item}` : gray;
                   return (
                     <ImageWrapper2
@@ -126,14 +122,14 @@ const ProductDetail = () => {
           <div className="flex flex-col gap-3">
             <div className="w-1/2">
               <div className="bg-gray-100 p-2 py-5 font-light h-8 text-[14px] border-none rounded-xl flex justify-center items-center gap-1">
-                <p>{translatedCategory.name}</p>
+                <p>{translatedCategory?.name}</p>
                 <RightOutlined className="text-xs" />{" "}
               </div>
             </div>
 
             <div className="flex flex-col gap-2">
               <p className="text-md sm:text-xl font-semibold">
-                {translatedData.name}
+                {translatedData?.name}
               </p>
               <div className="flex gap-1 items-center">
                 <img src={rating} alt="rating" />
@@ -161,7 +157,7 @@ const ProductDetail = () => {
                     {t("productDetail.category")}
                   </span>
                   <span className="font-semibold text-[15px]">
-                    {translatedCategory.name}{" "}
+                    {translatedCategory?.name}{" "}
                   </span>
                 </li>
                 <li className="h-8 w-full border-b border-b-gray-200 flex justify-between items-center">
@@ -170,7 +166,7 @@ const ProductDetail = () => {
                     {t("productDetail.data")}
                   </span>
                   <span className="font-semibold text-[15px]">
-                    {oneProduct.shelf_life}
+                    {oneProduct?.shelf_life}
                   </span>
                 </li>{" "}
                 <li className="h-8 w-full border-b border-b-gray-200 flex justify-between items-center">
@@ -178,7 +174,7 @@ const ProductDetail = () => {
                     {t("productDetail.temp")}
                   </span>
                   <span className="font-semibold text-[15px]">
-                    {oneProduct.minimum_temperature}
+                    {oneProduct?.minimum_temperature}
                   </span>
                 </li>{" "}
                 <li className="h-8 w-full border-b border-b-gray-200 flex justify-between items-center">
@@ -187,13 +183,13 @@ const ProductDetail = () => {
                     {t("productDetail.stock")}
                   </span>
                   <span className="font-semibold text-[15px]">
-                    {oneProduct.stock}
+                    {oneProduct?.stock}
                   </span>
                 </li>
               </ul>
 
               <p className="text-gray-500 font-light text-[15px]">
-                {translatedData.description}
+                {translatedData?.description}
               </p>
             </div>
           </div>
@@ -202,10 +198,10 @@ const ProductDetail = () => {
             <div className="border-2 rounded-xl border-gray-100 p-2 h-40 w-full flex flex-col gap-7 justify-center  sm:items-center">
               <div className="flex justify-between">
                 <span className="text-[34px] font-semibold">
-                  {oneProduct.price} $
+                  {oneProduct?.price} $
                 </span>
                 <span className="line-through text-[14px] text-gray-400 border-none rounded-xl p-3 bg-[#B9FFCE] w-1/3">
-                  {oneProduct.old_price} $
+                  {oneProduct?.old_price} $
                 </span>
               </div>
 
@@ -214,13 +210,16 @@ const ProductDetail = () => {
                   bg="dark"
                   size="sm"
                   title={t("shop.addToCart")}
-                  onClick={() => oneProduct && addToCart(oneProduct)}
+                  onClick={() => {
+                    
+                    setOneCartItem(oneProduct?.id);
+                  }}
                 />
                 <ProductLike
-                  isFavorite={oneProduct.is_favorite}
+                  isFavorite={oneProduct?.is_favorite}
                   green="green"
-                  id_product={oneProduct.slug}
-                  onClick={() => changeLike(oneProduct.slug)}
+                  id_product={oneProduct?.slug}
+                  onClick={() => changeLike(oneProduct?.slug)}
                 />
               </div>
             </div>
@@ -229,7 +228,7 @@ const ProductDetail = () => {
               bg="light"
               size="lg"
               title={t("productDetail.oneClick")}
-              to={accessToken ? "/checkout" : "/"}
+              to={accessToken ? "/cart" : "/"}
             />
           </div>
         </div>

@@ -178,5 +178,24 @@
     "politic":"Politic",
     "views":"views",
     "ago":"month ago"
+  }, 
+  "checkout": {
+    "title": "Enter your contact information",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "address_1": "Address 1",
+    "address_2": "Address 2",
+    "city": "City",
+    "country": "Country",
+    "postal_code": "Postal Code",
+    "state": "State",
+    "phone_number_1": "Phone Number 1",
+    "phone_number_2": "Phone Number 2",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "order": "Order",
+    "consent_text": "I have read and consent to Warudo processing my information in accordance with the Privacy Statement and Cookie Policy. Warudo is a trusted Tolus Partner.",
+    "success_title":"Your order has been successfully placed!",
+    "go_to_products":"Go To Shop"
   }
 }

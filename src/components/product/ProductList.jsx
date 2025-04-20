@@ -15,8 +15,6 @@ const ProductList = ({ pathname }) => {
 
   useEffect(() => {
     getProducts();
-    console.log("Current pathname:", pathname);
-
   }, []);
 
   const handleChange = (value) => {

@@ -114,7 +114,7 @@ const useProductStore = create((set, get) => ({
         const response = await axios.get(`${API}/api/api_product/products/`);
         set({ products: response.data });
         get().filterProducts(); // запускаем фильтрацию после загрузки
-        console.log(response.data);
+        // console.log(response.data);
       } catch (error) {
         set({ error: error.message || "Products load failed" });
       } finally {
@@ -130,7 +130,7 @@ const useProductStore = create((set, get) => ({
         });
         set({ products: response.data });
         get().filterProducts(); // запускаем фильтрацию после загрузки
-        console.log(response.data);
+        // console.log(response.data);
       } catch (error) {
         set({ error: error.message || "Products load failed" });
       } finally {
@@ -153,7 +153,7 @@ const useProductStore = create((set, get) => ({
           }
         );
         set({ oneProduct: response.data });
-        console.log(response.data);
+        // console.log(response.data);
       } catch (error) {
         set({ error: error.message || "Product load failed" });
       } finally {
@@ -162,9 +162,9 @@ const useProductStore = create((set, get) => ({
     }
   },
 
-  changeLike: async (slug, one) => {
+  changeLike: async (slug) => {
     const accessToken = localStorage.getItem("accessToken");
-
+  
     set({ loading: true, error: null });
     try {
       const response = await axios.post(
@@ -176,35 +176,36 @@ const useProductStore = create((set, get) => ({
           },
         }
       );
-      console.log(`success like:`, response.data);
-
-      const response2 = await axios.get(
-        `${API}/api/api_product/favorites/`,
-
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
-      set({ favProducts: response2.data });
-
+  
+      const response2 = await axios.get(`${API}/api/api_product/favorites/`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+  
       set((state) => ({
+        favProducts: response2.data,
         products: state.products.map((product) =>
           product.slug === slug
             ? { ...product, is_favorite: !product.is_favorite }
             : product
         ),
+        // если oneProduct открыт, тоже обновим
+        oneProduct:
+          state.oneProduct?.slug === slug
+            ? { ...state.oneProduct, is_favorite: !state.oneProduct.is_favorite }
+            : state.oneProduct,
       }));
-
-      console.log(one);
+  
+      // console.log(`success changeLike:`, response.data);
     } catch (error) {
       set({ error: error.message || "Product load failed" });
-      console.log("changeLike fail", error);
+      // console.log("changeLike fail", error);
     } finally {
       set({ loading: false });
     }
   },
+  
 
   getFavorites: async () => {
     const accessToken = localStorage.getItem("accessToken");
@@ -222,11 +223,11 @@ const useProductStore = create((set, get) => ({
       );
       set({ favProducts: response.data });
 
-      console.log("favProducts:", response.data);
-      console.log(response.data[0]);
+      // console.log("favProducts:", response.data);
+      // console.log(response.data[0]);
     } catch (error) {
       set({ error: error.message || "Product load failed" });
-      console.log("getFavorites fail", error);
+      // console.log("getFavorites fail", error);
     } finally {
       set({ loading: false });
     }
