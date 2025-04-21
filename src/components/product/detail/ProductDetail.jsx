@@ -84,7 +84,7 @@ const ProductDetail = () => {
 
   const ImageWrapper2 = ({ src, onClick }) => (
     <div
-      className=" h-[100px] sm:h-[120px] overflow-hidden pb-2 cursor-pointer"
+      className="h-[180px] sm:h-[220px] max-w-[150px] sm:max-w-[170px] overflow-hidden pb-2 cursor-pointer w-full"
       onClick={onClick}
     >
       <img
@@ -94,12 +94,13 @@ const ProductDetail = () => {
       />
     </div>
   );
+  
 
   return (
     <div>
-      <div className="p-3 sm:p-16">
+      <div className="p-3 sm:p-28">
         <BreadCrumbsDetails />
-        <div className="grid grid-cols-1 md:grid-cols-[640px_1fr_1fr] gap-6 md:h-[900px] ">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:h-[900px] ">
           <div>
             <div className="h-[500px] sm:h-[650px] flex gap-3">
               <div className="img-carousel h-full overflow-y-scroll">
@@ -146,7 +147,7 @@ const ProductDetail = () => {
                 </p>
                 <div className="bg-gray-100 p-2 h-7 text-[14px] font-light border-none rounded-xl flex justify-center items-center gap-1">
                   <p>{t("productDetail.go")}</p>
-                  <RightOutlined className="text-xs" />{" "}
+                  <RightOutlined className="text-xs" />
                 </div>
               </div>
 
@@ -194,7 +195,7 @@ const ProductDetail = () => {
             </div>
           </div>
 
-          <div className="flex flex-col items-center gap-2">
+          <div className="flex flex-col items-center gap-2 md:w-1/2">
             <div className="border-2 rounded-xl border-gray-100 p-2 h-40 w-full flex flex-col gap-7 justify-center  sm:items-center">
               <div className="flex justify-between">
                 <span className="text-[34px] font-semibold">
