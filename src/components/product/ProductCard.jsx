@@ -35,10 +35,11 @@ const ProductCard = ({ product, btnTitle, isfav }) => {
       name: "No name",
       description: "No description",
     };
+    
 
     const handleCardClick = async () => {
       if (accessToken) {
-        getFavorites();
+        await  getFavorites();
       }
     
       await getOneProductById(displayProduct.slug); // дождись данных
@@ -66,7 +67,7 @@ const ProductCard = ({ product, btnTitle, isfav }) => {
         />
       </div>
 
-      <div className="w-full h-[200px] sm:h-[288px] rounded-xl overflow-hidden">
+      <div className="w-full h-[200px] sm:h-[288px] rounded-xl overflow-hidden"  onClick={handleCardClick}>
         <img
           className="w-full h-full object-cover"
           src={

@@ -16,8 +16,7 @@ import { useParams } from "react-router-dom";
 import useCartStore from "@/store/cart/cartStore";
 
 const ProductDetail = () => {
-  const { oneProduct, getOneProductById, changeLike,  } =
-    useProductStore();
+  const { oneProduct, getOneProductById, changeLike } = useProductStore();
   const { slug } = useParams();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -54,6 +53,9 @@ const ProductDetail = () => {
 
   useEffect(() => {
     if ((!isLoading && !oneProduct) || !oneProduct?.translations) {
+      // getOneProductById(slug);
+
+      console.log(oneProduct);
       navigate(-1);
     }
   }, [isLoading, oneProduct]);
@@ -67,7 +69,9 @@ const ProductDetail = () => {
       description: t("product.no_description", "No description"),
     };
 
-  const translatedCategory = oneProduct?.category?.translations?.[currentLang] ||
+  const translatedCategory = oneProduct?.category?.translations?.[
+    currentLang
+  ] ||
     oneProduct?.category?.translations?.en || {
       name: t("product.no_name", "No name"),
     };
@@ -84,7 +88,7 @@ const ProductDetail = () => {
 
   const ImageWrapper2 = ({ src, onClick }) => (
     <div
-      className="h-[180px] sm:h-[220px] max-w-[150px] sm:max-w-[170px] overflow-hidden pb-2 cursor-pointer w-full"
+      className="h-[180px] sm:h-[220px] max-w-[110px] sm:max-w-[150px] overflow-hidden pb-2 cursor-pointer w-full"
       onClick={onClick}
     >
       <img
@@ -94,7 +98,6 @@ const ProductDetail = () => {
       />
     </div>
   );
-  
 
   return (
     <div>
@@ -195,7 +198,7 @@ const ProductDetail = () => {
             </div>
           </div>
 
-          <div className="flex flex-col items-center gap-2 md:w-1/2">
+          <div className="flex flex-col items-center gap-2 md:w-80">
             <div className="border-2 rounded-xl border-gray-100 p-2 h-40 w-full flex flex-col gap-7 justify-center  sm:items-center">
               <div className="flex justify-between">
                 <span className="text-[34px] font-semibold">
@@ -212,7 +215,6 @@ const ProductDetail = () => {
                   size="sm"
                   title={t("shop.addToCart")}
                   onClick={() => {
-                    
                     setOneCartItem(oneProduct?.id);
                   }}
                 />

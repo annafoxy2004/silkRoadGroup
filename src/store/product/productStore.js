@@ -141,16 +141,11 @@ const useProductStore = create((set, get) => ({
 
   getOneProductById: async (id) => {
     const accessToken = localStorage.getItem("accessToken");
-    if (accessToken) {
+    // if (accessToken) {
       set({ loading: true, error: null });
       try {
         const response = await axios.get(
-          `${API}/api/api_product/products/${id}/`,
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
+          `${API}/api/api_product/products/${id}/`
         );
         set({ oneProduct: response.data });
         // console.log(response.data);
@@ -159,7 +154,7 @@ const useProductStore = create((set, get) => ({
       } finally {
         set({ loading: false });
       }
-    }
+    // }
   },
 
   changeLike: async (slug) => {
@@ -168,7 +163,7 @@ const useProductStore = create((set, get) => ({
       set({ error: "No access token found" });
       return;
     }
-  
+
     set({ loading: true, error: null });
     try {
       // 1. Меняем статус на бэке
@@ -181,24 +176,27 @@ const useProductStore = create((set, get) => ({
           },
         }
       );
-  
+
       // 2. Обновляем products и oneProduct в Zustand
       set((state) => {
         const updateFavoriteFlag = (product) =>
           product.slug === slug
             ? { ...product, is_favorite: !product.is_favorite }
             : product;
-  
+
         return {
           products: state.products.map(updateFavoriteFlag),
           filteredProducts: state.filteredProducts.map(updateFavoriteFlag),
           oneProduct:
             state.oneProduct?.slug === slug
-              ? { ...state.oneProduct, is_favorite: !state.oneProduct.is_favorite }
+              ? {
+                  ...state.oneProduct,
+                  is_favorite: !state.oneProduct.is_favorite,
+                }
               : state.oneProduct,
         };
       });
-  
+
       // 3. После toggle обновим избранные (опционально)
       await get().getFavorites();
     } catch (error) {
@@ -208,15 +206,14 @@ const useProductStore = create((set, get) => ({
       set({ loading: false });
     }
   },
-  
-  
+
   getFavorites: async () => {
     const accessToken = localStorage.getItem("accessToken");
     if (!accessToken) {
       set({ error: "No access token found" });
       return;
     }
-  
+
     set({ loading: true, error: null });
     try {
       const response = await axios.get(`${API}/api/api_product/favorites/`, {
@@ -224,18 +221,18 @@ const useProductStore = create((set, get) => ({
           Authorization: `Bearer ${accessToken}`,
         },
       });
-  
+
       const favData = response.data;
-  
+
       set((state) => {
         // Обновим is_favorite в products в зависимости от favData
         const favIds = favData.map((fav) => fav.id);
-  
+
         const syncFavoriteFlag = (product) => ({
           ...product,
           is_favorite: favIds.includes(product.id),
         });
-  
+
         return {
           favProducts: favData,
           products: state.products.map(syncFavoriteFlag),
@@ -249,7 +246,6 @@ const useProductStore = create((set, get) => ({
       set({ loading: false });
     }
   },
-  
 }));
 
 export default useProductStore;

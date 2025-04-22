@@ -49,7 +49,8 @@ const useAuthStore = create((set) => ({
 
       localStorage.setItem("accessToken", access);
       localStorage.setItem("refreshToken", refresh);
-      console.log("login success", response.data);
+      alert("login success")
+      // console.log("login success", response.data);
       navigate("/");
       return response.data;
     } catch (error) {

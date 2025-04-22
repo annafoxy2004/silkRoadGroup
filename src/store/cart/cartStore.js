@@ -75,6 +75,7 @@ const useCartStore = create((set, get) => ({
           }
         );
         set({ cart: response.data });
+        alert("Product added to cart")
         // console.log("setOneCartItem success");
       } catch (error) {
         // console.log("setOneCartItem fail");
