@@ -101,9 +101,9 @@ const ProductDetail = () => {
 
   return (
     <div>
-      <div className="p-3 sm:p-28">
+      <div className="p-3 sm:p-28 sm:pb-0">
         <BreadCrumbsDetails />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:h-[900px] ">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:h-[700px] ">
           <div>
             <div className="h-[500px] sm:h-[650px] flex gap-3">
               <div className="img-carousel h-full overflow-y-scroll">
@@ -198,7 +198,7 @@ const ProductDetail = () => {
             </div>
           </div>
 
-          <div className="flex flex-col items-center gap-2 md:w-80">
+          <div className="flex flex-col items-center gap-2 lg:w-80">
             <div className="border-2 rounded-xl border-gray-100 p-2 h-40 w-full flex flex-col gap-7 justify-center  sm:items-center">
               <div className="flex justify-between">
                 <span className="text-[34px] font-semibold">

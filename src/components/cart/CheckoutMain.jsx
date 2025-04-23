@@ -14,8 +14,9 @@ import CartItem from "./CartIem";
 const CheckoutMain = () => {
   const { t } = useTranslation();
   const navigate = useNavigate(); // Используем useNavigate для навигации
-  const { checkoutData, setCheckoutField, submitOrder, consent, setConsent } =
-    useCheckoutStore();
+  const { checkoutData, setCheckoutField, submitOrder, consent, setConsent, validationErrors } =
+  useCheckoutStore();
+
   const { getCart, cart, loading } = useCartStore();
 
   useEffect(() => {
@@ -58,7 +59,7 @@ const CheckoutMain = () => {
   ];
 
   return (
-    <div className="flex flex-col lg:gap-10 lg:flex-row">
+    <div className="flex flex-col lg:gap-16 lg:flex-row lg:px-28 py-10">
       <div className="px-4 sm:w-full">
         {loading ? (
           <div className="flex justify-center items-center min-h-[300px]">
@@ -80,49 +81,52 @@ const CheckoutMain = () => {
       <div className="p-4 max-w-3xl mx-auto">
         <p className="font-bold text-3xl py-5 lg:py-10">{t("checkout.title")}</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          {fields.map(({ name, label }) => (
-            <div key={name} className="flex flex-col">
-              <label className="text-sm font-medium text-gray-700 mb-1">
-                {label}
-              </label>
-              {name === "phone_number_1" ||
-              name === "phone_number_2" ||
-              name === "whatsapp" ? (
-                <PhoneInput
-                  country={"kg"}
-                  enableSearch
-                  inputClass="!w-full !h-10"
-                  containerClass="!w-full"
-                  value={checkoutData[name]}
-                  onChange={(phone) => setCheckoutField(name, phone)}
-                />
-              ) : name === "telegram" ? (
-                <Input
-                  placeholder="telegram link"
-                  value={checkoutData[name]}
-                  onChange={handleChange(name)}
-                  addonAfter={
-                    checkoutData[name] ? (
-                      <a
-                        href={`https://t.me/${checkoutData[name]}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-500"
-                      >
-                        {t("checkout.telegram")}
-                      </a>
-                    ) : null
-                  }
-                />
-              ) : (
-                <Input
-                  placeholder={label}
-                  value={checkoutData[name]}
-                  onChange={handleChange(name)}
-                />
-              )}
-            </div>
-          ))}
+        {fields.map(({ name, label }) => (
+  <div key={name} className="flex flex-col">
+    <label className="text-sm font-medium text-gray-700 mb-1">
+      {label}
+    </label>
+    {name === "phone_number_1" ||
+    name === "phone_number_2" ||
+    name === "whatsapp" ? (
+      <PhoneInput
+        country={"kg"}
+        enableSearch
+        inputClass={`!w-full !h-10 ${validationErrors[name] ? "!border-red-500" : ""}`}
+        containerClass="!w-full"
+        value={checkoutData[name]}
+        onChange={(phone) => setCheckoutField(name, phone)}
+      />
+    ) : name === "telegram" ? (
+      <Input
+        placeholder="telegram link"
+        value={checkoutData[name]}
+        onChange={handleChange(name)}
+        className={validationErrors[name] ? "border-red-500" : ""}
+        addonAfter={
+          checkoutData[name] ? (
+            <a
+              href={`https://t.me/${checkoutData[name]}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500"
+            >
+              {t("checkout.telegram")}
+            </a>
+          ) : null
+        }
+      />
+    ) : (
+      <Input
+        placeholder={label}
+        value={checkoutData[name]}
+        onChange={handleChange(name)}
+        className={validationErrors[name] ? "border-red-500" : ""}
+      />
+    )}
+  </div>
+))}
+
         </div>
 
         <div className="flex items-start gap-2 mb-6">

@@ -103,7 +103,7 @@
     "addToCart": "Add to cart",
     "seeAll": "See all",
     "total": "Total",
-    "fav":"My favorite products"
+    "fav": "My favorite products"
   },
   "about": {
     "our": "Our Team",
@@ -114,7 +114,13 @@
     "mid1": "OUR MISSION",
     "mid2": "GET TO KNOW US: WHO WE ARE AND WHAT WE STAND FOR",
     "mid3": "Shaping a Greener Tomorrow Through Sustainability, Quality, and Innovation",
-    "mid4": "We aim to create a world where caring for the environment and health is accessible to everyone. Our mission is to provide high-quality, eco-friendly products and solutions that support a healthy lifestyle and a sustainable future. We combine innovation, a responsible approach to nature, and a commitment to excellence to make eco-conscious choices simple, convenient, and inspiring. We believe that, together with our customers and partners, we can contribute to building a better world for present and future generations."
+    "mid4": "We aim to create a world where caring for the environment and health is accessible to everyone. Our mission is to provide high-quality, eco-friendly products and solutions that support a healthy lifestyle and a sustainable future. We combine innovation, a responsible approach to nature, and a commitment to excellence to make eco-conscious choices simple, convenient, and inspiring. We believe that, together with our customers and partners, we can contribute to building a better world for present and future generations.",
+    "partner1": "Sadyrbek Arzykul uulu",
+    "partner2": "Kamalov Bekzat",
+    "partner3": "Dosmatov Askar",
+    "desc1": "Founder",
+    "desc2": "Co-founder",
+    "desc3": "Co-founder"
   },
   "faq": {
     "title1": "FREQUENTLY ASKED QUESTIONS",
@@ -172,13 +178,13 @@
     "total": "Total",
     "checkout": "Check Out"
   },
-  "news":{
-    "title1":"Latest news",
-    "title2":"Explore the Latest Updates, News, and Stories Shaping Our Community and Vision",
-    "politic":"Politic",
-    "views":"views",
-    "ago":"month ago"
-  }, 
+  "news": {
+    "title1": "Latest news",
+    "title2": "Explore the Latest Updates, News, and Stories Shaping Our Community and Vision",
+    "politic": "Politic",
+    "views": "views",
+    "ago": "month ago"
+  },
   "checkout": {
     "title": "Enter your contact information",
     "first_name": "First Name",
@@ -195,7 +201,7 @@
     "telegram": "Telegram",
     "order": "Order",
     "consent_text": "I have read and consent to Warudo processing my information in accordance with the Privacy Statement and Cookie Policy. Warudo is a trusted Tolus Partner.",
-    "success_title":"Your order has been successfully placed!",
-    "go_to_products":"Go To Shop"
+    "success_title": "Your order has been successfully placed!",
+    "go_to_products": "Go To Shop"
   }
 }

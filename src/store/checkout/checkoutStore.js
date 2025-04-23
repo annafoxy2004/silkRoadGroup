@@ -17,7 +17,8 @@ const useCheckoutStore = create((set) => ({
     whatsapp: "",
     telegram: "",
   },
-  consent: false, // Добавляем состояние consent
+  consent: false,
+  validationErrors: {},
 
   setCheckoutField: (field, value) =>
     set((state) => ({
@@ -25,12 +26,37 @@ const useCheckoutStore = create((set) => ({
         ...state.checkoutData,
         [field]: value,
       },
+      validationErrors: {
+        ...state.validationErrors,
+        [field]: false,
+      },
     })),
 
-  setConsent: (value) => set({ consent: value }), // Метод для обновления consent
+  setConsent: (value) => set({ consent: value }),
+
+  validateCheckoutData: () => {
+    const { checkoutData } = useCheckoutStore.getState();
+    const errors = {};
+
+    Object.entries(checkoutData).forEach(([key, value]) => {
+      if (!value || value.trim() === "") {
+        errors[key] = true;
+      }
+    });
+
+    set({ validationErrors: errors });
+    return Object.keys(errors).length === 0;
+  },
 
   submitOrder: async (onSuccess) => {
     const accessToken = localStorage.getItem("accessToken");
+    const isValid = useCheckoutStore.getState().validateCheckoutData();
+
+    if (!isValid) {
+      alert("Заполните все поля перед отправкой заказа.");
+      return;
+    }
+
     if (accessToken) {
       try {
         const { checkoutData } = useCheckoutStore.getState();
@@ -43,8 +69,6 @@ const useCheckoutStore = create((set) => ({
             },
           }
         );
-        // console.log("Order submitted:", response.data);
-        // После успешной отправки очищаем данные
         set({
           checkoutData: {
             first_name: "",
@@ -60,11 +84,13 @@ const useCheckoutStore = create((set) => ({
             whatsapp: "",
             telegram: "",
           },
-          consent: false, // Очистить согласие
+          consent: false,
+          validationErrors: {},
         });
-        onSuccess(); // Вызываем коллбек, чтобы показать модалку
+        onSuccess();
       } catch (error) {
         console.error("Order submission failed:", error);
+        alert("Did not fill in all the fields or entered the data incorrectly. Please check the correctness of the entered data!")
       }
     }
   },

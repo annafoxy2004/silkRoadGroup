@@ -25,6 +25,7 @@ const useAuthStore = create((set) => ({
       const errorMessage =
         error.response?.data?.message || error.message || "Registration failed";
       set({ error: errorMessage });
+      alert("Did not fill in all the fields!")
       return null;
     } finally {
       set({ loading: false });
@@ -49,7 +50,7 @@ const useAuthStore = create((set) => ({
 
       localStorage.setItem("accessToken", access);
       localStorage.setItem("refreshToken", refresh);
-      alert("login success")
+      alert("Login success")
       // console.log("login success", response.data);
       navigate("/");
       return response.data;
@@ -57,7 +58,8 @@ const useAuthStore = create((set) => ({
       const errorMessage =
         error.response?.data?.message || error.message || "Login failed";
       set({ error: errorMessage });
-      console.log("login failed");
+      alert("Did not fill in all the fields or entered the data incorrectly. Please check the correctness of the entered data!")
+      // console.log("login failed");
       return null;
     } finally {
       set({ loading: false });
