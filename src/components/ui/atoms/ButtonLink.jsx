@@ -13,7 +13,7 @@ const ButtonLink = ({
   onClick
 }) => {
   const bgClasses = {
-    light: "bg-[#E5FFED] text-[#20A647]",
+    light: "bg-[#E5FFED] text-[#20A647]  hover:bg-[#c3decb] hover:text-[#20A647]",
     dark: "bg-[#28C656] hover:bg-[#20A647] hover:border text-white",
     white: "bg-white hover:bg-gray-100 text-[#20A647] border",
   };
